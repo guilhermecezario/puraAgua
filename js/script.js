@@ -15,7 +15,6 @@ const urlClientes = database.child('clientes');
 
 function buscarClientes(){
   urlClientes.once('value', data =>{
-    const todosClientes = data.val();
     $('#bodyTable').text('');
     data.forEach((element) => {
       dados = element.val();
@@ -29,26 +28,44 @@ function buscarClientes(){
   });
 }
 function addCliente(){
-  if($("#nome").val() && $("#sobrenome").val() && $("#telefone").val() && $("#cidade").val() && $("#rua").val() && $("#numero").val() && $("#bairro").val()){
+  if($("#nome").val() && $("#sobrenome").val() && $("#telefone").val() && $("#cidade").val() && $("#rua").val() && $("#numeroCasa").val() && $("#bairro").val()){
     urlClientes.push({
       nome: $("#nome").val(),
       sobrenome: $("#sobrenome").val(),
       telefone: $("#telefone").val(),
       cidade: $("#cidade").val(),
       rua: $("#rua").val(),
-      numero: $("#numero").val(),
+      numeroCasa: $("#numeroCasa").val(),
       bairro: $("#bairro").val()
+    }).then(function(data){
+      window.location.href = 'index.html';
     });
-    console.log('foi');
-    window.location.href = 'index.html';
   }
 }
-function abrirCadCliente(){
-  window.location.href = 'cadCliente.html';
+function abrirCliente(id){
+  window.location.href = 'perfilUsuario.html?id='+id;
+}
+function buscarDadosUsuario(){
+  var query = location.search.slice(1);
+  var partes = query.split('&');
+  var id;
+  partes.forEach(function (parte) {
+    var chaveValor = parte.split('=');
+    if(chaveValor == ''){
+      window.location.href = 'index.html';
+    }else{
+      var valor = chaveValor[1];
+      id = valor;
+    }
+  });
+
+  urlClientes.child(id).once('value', (snap)=>{
+    var dados = snap.val()
+  });
+
 }
 $('#buscar').keyup(function(){
   var nomeFiltro = $(this).val().toLowerCase();
-  console.log(nomeFiltro);
   $('table tbody').find('tr').each(function() {
     var conteudoCelula = $(this).find('th:first').text();
     var corresponde = conteudoCelula.toLowerCase().indexOf(nomeFiltro) >= 0;

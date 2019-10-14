@@ -5,7 +5,9 @@
   font-family: 'Montserrat';
   margin-bottom: 30px;
 }
-
+.align{
+  display: flex;
+}
 .cardInfo-header{
   font-size: 20px;
   padding: 10px 0px;

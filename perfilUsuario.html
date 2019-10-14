@@ -14,7 +14,7 @@
   <title>Pura Água</title>
 </head>
 
-<body>
+<body onload="buscarDadosUsuario()">
   <div class="allContent">
     <div class="sidebar">
       <div class="headerLogo">
@@ -43,15 +43,15 @@
             <h2>Informações do cliente</h2>
           </div>
           <div class="cardInfo-line1">
-            <div>Nome: João</div>
-            <div>Sobrenome: Felipe</div>
-            <div>Número: (15)997189839</div>
+            <div class="align"><div>Nome:</div id='nome'></div>
+            <div class="align"><div>Sobrenome:</div id='sobrenome'>sdok</div>
+            <div class="align"><div>Numero:</div id='numero'>spadok</div>
           </div>
           <div class="cardInfo-line2">
-            <div>Rua: Rua Alan Kardec</div>
-            <div>Bairro: Jadim Ferrari</div>
-            <div>Cidade: Itapeva</div>
-            <div>N° da casa: 117</div>
+              <div class="align"><div>Rua:</div id='rua'></div>
+              <div class="align"><div>Bairro:</div id='bairro'></div>
+              <div class="align"><div>Cidade:</div id='cidade'></div>
+              <div class="align"><div>N° da casa:</div id='numeroCasa'></div>
           </div>
         </div>
 
@@ -76,7 +76,10 @@
       </div>
     </div>
   </div>
-
+  <script src="./js/jquery-3.4.1.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+  <script src="./js/script.js"></script>
   <script src="js/sidebar.js"></script>
 </body>
 
