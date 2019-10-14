@@ -1,0 +1,155 @@
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  font-weight: 400;
+  vertical-align: middle;
+  line-height: 25px;
+}
+
+.navbar {
+  background-color: #5DC9F3;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 15px;
+}
+
+.sidebar {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 15em;
+  height: 100%;
+  z-index: -1;
+  background-color: #5DC9F3;
+  overflow-x: hidden;
+  padding: 10px 0px;
+  font-family: 'Montserrat';
+}
+
+.sidebar a {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.buttonDefault{
+  background-color: #0A94DA;
+  display: block;
+  padding: 20px;
+  transition: 500ms;
+}
+
+.buttonDisabled{
+  background-color: #5DC9F3;
+  display: block;
+  padding: 20px;
+  transition: 500ms;
+  text-align: left;
+  border-top: solid 2px transparent;
+  border-bottom: solid 2px transparent;
+}
+
+.buttonDisabled:hover{
+  background-color: #0A94DA;
+  border-top: solid 2px white;
+  border-bottom: solid 2px white;
+}
+
+.headerLogo{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo{
+  width: 90%;
+}
+
+#wrapper {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  overflow-y: auto;
+  font-size: 28px;
+  z-index: 2;
+  transition: 900ms;
+  background: white;
+  width: 100% ;
+}
+
+.content {
+  padding: 70px 15px;
+  min-height: 100vh;
+  background-color: #f6f6f6;
+  font-family: 'Montserrat';
+}
+
+.allContent {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonDefault h2, .buttonDisabled h2{
+  font-size: 25px;
+}
+
+.closedSidebar {
+  margin-left: 0rem;
+}
+
+.openedSidebar {
+  margin-left: 15rem;
+}
+
+.navIcon {
+  float: left;
+}
+
+.navSearch {
+  float: right;
+  margin-right: 0.5rem;
+  transition: 900ms;
+}
+
+.barsMenu {
+  height: 39px;
+  color: #21488B;
+  font-size: 35px;
+}
+
+
+.fa-bars {
+  cursor: pointer;
+}
+
+input[type="search"] {
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 15px;
+}
+
+input[type="search"]::placeholder {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+input[type="search"]:focus {
+  outline: thin dotted;
+  outline: 0px auto -webkit-focus-ring-color;
+  outline-offset: 0px;
+}

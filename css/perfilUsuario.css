@@ -1,0 +1,31 @@
+.cardInfo{
+  width: 98vw;
+  min-height: 20vh;
+  transition: 900ms;
+  font-family: 'Montserrat';
+  margin-bottom: 30px;
+}
+
+.cardInfo-header{
+  font-size: 20px;
+  padding: 10px 0px;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  color: rgb(27, 56, 105);
+}
+
+.cardInfo-line1, .cardInfo-line2{
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.cardInfo-line1{
+  background-color: #C1EBFD;
+}
+
+.cardInfo-line2{
+  background-color: #A3DEF8;
+}

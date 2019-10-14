@@ -1,0 +1,39 @@
+table {
+  font-family: 'Montserrat';
+  border-collapse: collapse;
+  width: 98vw;
+  transition: 900ms;
+}
+
+.titleTable{
+  color: Black;
+  padding: 10px 0px;
+  font-size: 30px;
+  color: rgb(27, 56, 105);
+}
+
+td,
+th {
+  text-align: center;
+  padding: 20px;
+}
+
+th{
+  font-size: 25px;
+}
+
+td{
+  font-size: 20px;
+}
+
+tr:nth-child(1) {
+  background-color: #76B9FC !important;
+}
+
+tr:nth-child(even) {
+  background-color: #C1EBFD;
+}
+
+tr:nth-child(2n+1) {
+  background-color: #A3DEF8;
+}

@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+div.content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.columns-2 {
+    display: grid;
+    grid-template-columns: repeat(2 , 50%);
+}
+
+.item {
+	margin: 5px;    
+}   
+
+div#bloco-azul {
+    background-color: #8bd7f7;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+div#bloco-azul div.bloco-img h1{
+   color: white;
+   font-weight: bold;
+   font-size: 4em;
+}
+
+div#bloco-branco {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#bloco-branco form legend{
+    font-weight: bold;
+    color: #022564;
+    font-size: 3em;
+}
+
+div#bloco-branco form p{
+    color: #022564;
+    margin-bottom: 0;
+    font-size: 1.8em;
+}
+
+div#bloco-branco form input {
+    width: 15vw;
+    margin-right: 5%;
+    border: 1.5px solid #022564;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #022564;
+    background-color: #ecf3fe;
+    margin-bottom: 3%;
+}
+
+div#bloco-branco form input.inputMaior {
+    /* Gambiarra brava em maluco */
+    width: 205%;
+    margin-bottom: 10%;
+}
+
+.linhaToda {
+    grid-column: span 2;   
+}
+
+::placeholder{
+    color: #022564;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border-radius: 5px;
+    border: none;
+    background-color: #4e72af;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 10px 100px;
+}
+
+button:hover{
+    background-color: #3c5e9b;
+}

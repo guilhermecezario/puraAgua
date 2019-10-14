@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/perfilUsuario.css">
+  <script src="https://kit.fontawesome.com/1c265f2a26.js" crossorigin="anonymous"></script>
+  <title>Pura Água</title>
+</head>
+
+<body>
+  <div class="allContent">
+    <div class="sidebar">
+      <div class="headerLogo">
+        <img src="img/logo.png" class="logo">
+      </div>
+      <a href="index.html">
+        <div class="buttonDisabled">
+          <h2>Administrador</h2>
+        </div>
+      </a>
+      <a href="#">
+        <div class="buttonDefault">
+          <h2>Adicionar Novo Cliente</h2>
+        </div>
+      </a>
+    </div>
+    <div class="closedSidebar" id="wrapper">
+      <div class="navbar">
+        <ul>
+          <li class="navIcon"><span class="barsMenu " id="sidebarButton"><i class="fas fa-bars"></i></span></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="card cardInfo">
+          <div class="cardInfo-header">
+            <h2>Informações do cliente</h2>
+          </div>
+          <div class="cardInfo-line1">
+            <div>Nome: João</div>
+            <div>Sobrenome: Felipe</div>
+            <div>Número: (15)997189839</div>
+          </div>
+          <div class="cardInfo-line2">
+            <div>Rua: Rua Alan Kardec</div>
+            <div>Bairro: Jadim Ferrari</div>
+            <div>Cidade: Itapeva</div>
+            <div>N° da casa: 117</div>
+          </div>
+        </div>
+
+        <table>
+            <h2 class="titleTable">Histórico de compras</h2>
+            <tr class="headerTable">
+              <th>Nome</th>
+              <th>Endereço</th>
+              <th>Número</th>
+            </tr>
+            <tr>
+              <td>João Felipe</td>
+              <td>Rua Alan Kardec</td>
+              <td>(15)997189839</td>
+            </tr>
+            <tr>
+              <td>João Felipe</td>
+              <td>Rua Alan Kardec</td>
+              <td>(15)997189839</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/sidebar.js"></script>
+</body>
+
+</html>
