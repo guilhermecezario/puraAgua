@@ -1,17 +1,4 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyDjtqhb3BUZ7-nznEpJ6oLeRsEO960ZZe8",
-  authDomain: "puraagua-7985e.firebaseapp.com",
-  databaseURL: "https://puraagua-7985e.firebaseio.com",
-  projectId: "puraagua-7985e",
-  storageBucket: "puraagua-7985e.appspot.com",
-  messagingSenderId: "243135690208",
-  appId: "1:243135690208:web:6e0f3d0acc06549aba2785",
-  measurementId: "G-FGLLFXE9CC"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database().ref();
-const urlClientes = database.child('clientes');
+var id;
 
 function buscarClientes(){
   urlClientes.once('value', data =>{
@@ -45,10 +32,27 @@ function addCliente(){
 function abrirCliente(id){
   window.location.href = 'perfilUsuario.html?id='+id;
 }
-function buscarDadosUsuario(){
+function abrirVenda(){
+  window.location.href = 'novaVenda.html?id='+id;
+}
+
+function addVenda(){
+  buscarUrl();
+  if($("#dataVenda").val() && $("#dataGalao").val() && $("#quantidade").val() && $("#valorTotal").val()){
+    urlVendas.push({
+      dataVenda: $("#dataVenda").val(),
+      dataGalao: $("#dataGalao").val(),
+      quantidade: $("#quantidade").val(),
+      valorTotal: $("#valorTotal").val(),
+      idCliente: id
+    }).then(function(data){
+      window.location.href = 'perfilUsuario.html?id='+id;
+    });
+  }
+}
+function buscarUrl(){
   var query = location.search.slice(1);
   var partes = query.split('&');
-  var id;
   partes.forEach(function (parte) {
     var chaveValor = parte.split('=');
     if(chaveValor == ''){
@@ -58,12 +62,41 @@ function buscarDadosUsuario(){
       id = valor;
     }
   });
+}
+function buscarCliente(){
+  buscarUrl();
 
   urlClientes.child(id).once('value', (snap)=>{
-    var dados = snap.val()
+    var dados = snap.val();
+    $("#nome").html(dados.nome);
+    $("#sobrenome").html(dados.sobrenome);
+    $("#telefone").html(dados.telefone);
+    $("#rua").html(dados.rua);
+    $("#bairro").html(dados.bairro);
+    $("#cidade").html(dados.cidade);
+    $("#numeroCasa").html(dados.numeroCasa);
   });
 
+  buscarVendas();
 }
+
+function buscarVendas(){
+  urlVendas.once('value', data =>{
+    $('#bodyTable').text('');
+    data.forEach((element) => {
+      dados = element.val();
+      if(dados.idCliente == id){
+        $('#bodyTable').append('<tr>'+
+        '<th>'+dados.dataVenda+'</th>'+
+        '<th>'+dados.dataGalao+'</th>'+
+        '<th>'+dados.quantidade+'</th>'+
+        '<th>'+dados.valorTotal+'</th>'+
+        '</tr>');
+      }
+    });
+  });
+}
+
 $('#buscar').keyup(function(){
   var nomeFiltro = $(this).val().toLowerCase();
   $('table tbody').find('tr').each(function() {

@@ -14,7 +14,7 @@
   <title>Pura Água</title>
 </head>
 
-<body onload="buscarDadosUsuario()">
+<body onload="buscarCliente()">
   <div class="allContent">
     <div class="sidebar">
       <div class="headerLogo">
@@ -25,9 +25,9 @@
           <h2>Administrador</h2>
         </div>
       </a>
-      <a href="#">
+      <a onclick="abrirVenda()">
         <div class="buttonDefault">
-          <h2>Adicionar Novo Cliente</h2>
+          <h2>Adicionar nova compra</h2>
         </div>
       </a>
     </div>
@@ -43,42 +43,39 @@
             <h2>Informações do cliente</h2>
           </div>
           <div class="cardInfo-line1">
-            <div class="align"><div>Nome:</div id='nome'></div>
-            <div class="align"><div>Sobrenome:</div id='sobrenome'>sdok</div>
-            <div class="align"><div>Numero:</div id='numero'>spadok</div>
+            <div>Nome: <span id="nome"></span></div>
+            <div>Sobrenome: <span id="sobrenome"></span></div>
+            <div>Número: <span id="telefone"></span></div>
           </div>
           <div class="cardInfo-line2">
-              <div class="align"><div>Rua:</div id='rua'></div>
-              <div class="align"><div>Bairro:</div id='bairro'></div>
-              <div class="align"><div>Cidade:</div id='cidade'></div>
-              <div class="align"><div>N° da casa:</div id='numeroCasa'></div>
+            <div>Rua: <span id="rua"></span></div>
+            <div>Bairro: <span id="bairro"></span></div>
+            <div>Cidade: <span id="cidade"></span></div>
+            <div>N° da casa: <span id="numeroCasa"></span></div>
           </div>
         </div>
 
         <table>
-            <h2 class="titleTable">Histórico de compras</h2>
+          <h2 class="titleTable">Histórico de compras</h2>
+          <thead>
             <tr class="headerTable">
-              <th>Nome</th>
-              <th>Endereço</th>
-              <th>Número</th>
+              <th>Data da venda</th>
+              <th>Data do galão</th>
+              <th>Quantidade</th>
+              <th>Valor total</th>
             </tr>
-            <tr>
-              <td>João Felipe</td>
-              <td>Rua Alan Kardec</td>
-              <td>(15)997189839</td>
-            </tr>
-            <tr>
-              <td>João Felipe</td>
-              <td>Rua Alan Kardec</td>
-              <td>(15)997189839</td>
-            </tr>
-          </table>
+          </thead>
+          <tbody id="bodyTable">
+
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
   <script src="./js/jquery-3.4.1.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+  <script src="./js/inicializeFirebase.js"></script>
   <script src="./js/script.js"></script>
   <script src="js/sidebar.js"></script>
 </body>

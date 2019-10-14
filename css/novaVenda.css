@@ -39,19 +39,19 @@ div#bloco-branco {
   align-items: center;
 }
 
-div#bloco-branco form legend{
+div#bloco-branco .form legend{
   font-weight: bold;
   color: #022564;
   font-size: 3em;
 }
 
-div#bloco-branco form p{
+div#bloco-branco .form p{
   color: #022564;
   margin-bottom: 0;
   font-size: 1.8em;
 }
 
-div#bloco-branco form input {
+div#bloco-branco .form input {
   width: 15vw;
   margin-right: 5%;
   border: 1.5px solid #022564;

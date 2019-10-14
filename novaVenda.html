@@ -21,39 +21,45 @@
     </div>
 
     <div id="bloco-branco">
-      <form>
+      <div class="form">
         <legend>Dados da Venda</legend>
 
         <div class="columns-2">
           <div class="item">
             <p>Data de Hoje</p>
-            <input type="date" name="dataHoje" />
+            <input type="date" name="dataHoje" id="dataVenda"/>
           </div>
 
           <div class="item">
             <p>Data do Galão</p>
-            <input type="text" name="dataGalao" placeholder="Ex: 09/2019" />
+            <input type="text" name="dataGalao" placeholder="Ex: 09/2019" id="dataGalao"/>
           </div>
         </div>
 
         <div class="columns-2">
           <div class="item">
             <p>Quantidade</p>
-            <input type="number" name="quantidade" placeholder="Ex: 3" />
+            <input type="number" name="quantidade" placeholder="Ex: 3" id="quantidade"/>
           </div>
 
           <div class="item">
             <p>Valor Total</p>
-            <input type="float" name="valorTotal" placeholder="Ex: 100.00" />
+            <input type="float" name="valorTotal" placeholder="Ex: 100.00" id="valorTotal"/>
           </div>
         </div>
 
         <div class="btn">
-          <button>Entrar</button>
+          <button onclick="addVenda()">adicionar</button>
         </div>
-      </form>
+      </div>
     </div>
   </div>
+  <script src="./js/jquery-3.4.1.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+  <script src="./js/inicializeFirebase.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="js/sidebar.js"></script>
 </body>
 
 </html>
