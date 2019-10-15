@@ -26,14 +26,16 @@ td{
   font-size: 20px;
 }
 
-tr:nth-child(1) {
+thead tr{
   background-color: #76B9FC !important;
 }
 
 tr:nth-child(even) {
   background-color: #C1EBFD;
+  transition: 200ms;
 }
 
 tr:nth-child(2n+1) {
   background-color: #A3DEF8;
+  transition: 200ms;
 }
