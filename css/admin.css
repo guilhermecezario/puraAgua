@@ -30,19 +30,19 @@ div#bloco-branco {
     align-items: center;
 }
 
-div#bloco-branco form legend{
+div#bloco-branco .form legend{
     font-weight: bold;
     color: #022564;
     font-size: 3em;
 }
 
-div#bloco-branco form p{
+div#bloco-branco .form p{
     color: #022564;
     margin-bottom: 0;
     font-size: 1.8em;
 }
 
-div#bloco-branco form input[type="email"], div#bloco-branco form input[type="password"] {
+div#bloco-branco .form input[type="email"], div#bloco-branco .form input[type="password"] {
     width: 30vw;
     border: 1.5px solid #022564;
     border-radius: 5px;
@@ -52,7 +52,7 @@ div#bloco-branco form input[type="email"], div#bloco-branco form input[type="pas
     margin-bottom: 3%;
 }
 
-div#bloco-branco form input[type="password"]{
+div#bloco-branco .form input[type="password"]{
     margin-bottom: 10%;
 }
 

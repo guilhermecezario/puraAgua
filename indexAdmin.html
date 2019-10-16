@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tela admin</title>
+</head>
+<body onload="conferirAdmin()">
+  <div>
+    Total do dia: <span id="totalDia"></span>
+  </div>
+  <div>
+    Total da semana: <span id="totalSemana"></span>
+  </div>
+  <div>
+    Total do mês: <span id="totalMes"></span>
+  </div>
+  <script src="./js/jquery-3.4.1.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+  <script src="./js/inicializeFirebase.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+</html>
