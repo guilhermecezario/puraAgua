@@ -27,8 +27,6 @@ function addCliente(){
     }).then(function(data){
       window.location.href = 'index.html';
     });
-  }else{
-    $('#mensagem').html("Todos os campos são obrigatorios");
   }
 }
 function abrirCliente(id){
@@ -54,6 +52,80 @@ function addVenda(){
     $('#mensagem').html("Todos os campos são obrigatorios");
   }
 }
+
+function entrarAdmin(){
+  var auth = firebase.auth();
+  var email = $('#email').val();
+  var senha = $('#senha').val();
+  if(email && senha){
+    auth.signInWithEmailAndPassword(email, senha).then(function(){
+      window.location.href = 'admin.html';
+    }).catch((data)=>{
+      if(data.code == 'auth/user-not-found'){
+        $('#mensagem').html("Você não é administrador");
+      }else if(data.code == "auth/wrong-password"){
+        $('#mensagem').html("Senha incorreta");
+      }else if(data.code == "auth/network-request-failed"){
+        $('#mensagem').html("Sem conexão com a internet");
+      }
+    });
+  }
+}
+
+function conferirAdmin(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      contarTotal();
+    } else {
+      window.location.href = 'index.html';
+    }
+  });
+}
+function logout(){
+  firebase.auth().signOut()
+  .then(function() {
+    window.location.href = 'index.html';
+  }, function(error) {
+    console.error( error );
+  });
+}
+
+function contarTotal(){
+  let dia = 0;
+  let semana = 0;
+  let mes = 0;
+  date = new Date;
+  var carr = new Date;
+  console.log(date);
+  var first = carr.getDate() - carr.getDay() + 1;
+  var last = first + 6;
+  var primeiroDia = new Date(carr.setDate(first)).getDate();
+  var ultimoDia = new Date(carr.setDate(last)).getDate();
+  urlVendas.once('value', (snap)=>{
+    snap.forEach((aux)=>{
+      let dados = aux.val();
+      let dataCortada = dados.dataVenda.split('/');
+      console.log(dataCortada);
+      if(date.getFullYear() == dataCortada[2] && date.getMonth()+1 == dataCortada[1]){
+        mes += dados.valorTotal;
+        if(date.getDate() == dataCortada[0]){
+          dia += dados.valorTotal;
+        }
+        if(ultimoDia < primeiroDia){
+          if(dataCortada[0] >= 31 || dataCortada[0] <= ultimoDia){
+            semana += dados.valorTotal;
+          }
+        }else if(dataCortada[0] >= primeiroDia && dataCortada[0] <= ultimoDia){
+          semana += dados.valorTotal;
+        }
+      }
+    });
+    $('#totalDia').html(dia);
+    $('#totalSemana').html(semana);
+    $('#totalMes').html(mes);
+  });
+}
+
 function buscarUrl(){
   var query = location.search.slice(1);
   var partes = query.split('&');
@@ -82,69 +154,6 @@ function buscarCliente(){
   });
 
   buscarVendas();
-}
-function entrarAdmin(){
-  var auth = firebase.auth();
-  var email = $('#email').val();
-  var senha = $('#senha').val();
-  if(email && senha){
-    auth.signInWithEmailAndPassword(email, senha).then(function(){
-      window.location.href = 'indexAdmin.html';
-    }).catch((data)=>{
-      if(data.code == 'auth/user-not-found'){
-        $('#mensagem').html("Você não é administrador");
-      }else if(data.code == "auth/wrong-password"){
-        $('#mensagem').html("Senha incorreta");
-      }else if(data.code == "auth/network-request-failed"){
-        $('#mensagem').html("Sem conexão com a internet");
-      }
-    });
-  }
-}
-function conferirAdmin(){
-  var auth = firebase.auth();
-  auth.onAuthStateChanged(function(user) {
-    if (user) {
-      contarTotal();
-    } else {
-      window.location.href = 'index.html';
-    }
-  });
-}
-function contarTotal(){
-  let dia = 0;
-  let semana = 0;
-  let mes = 0;
-  date = new Date;
-  var carr = new Date;
-  console.log(carr);
-  var first = carr.getDate() - carr.getDay() + 1;
-  var last = first + 6;
-  var primeiroDia = new Date(carr.setDate(first)).getDate();
-  var ultimoDia = new Date(carr.setDate(last)).getDate();
-  console.log(carr);
-  urlVendas.once('value', (snap)=>{
-    snap.forEach((aux)=>{
-      let dados = aux.val();
-      let dataCortada = dados.dataVenda.split('/');
-      if(date.getFullYear() == dataCortada[2] && date.getMonth()+1 == dataCortada[1]){
-        mes += dados.valorTotal;
-        if(date.getDate() == dataCortada[0]){
-          dia += dados.valorTotal;
-        }
-        if(ultimoDia < primeiroDia){
-          if(dataCortada[0] >= 31 || dataCortada[0] <= ultimoDia){
-            semana += dados.valorTotal;
-          }
-        }else if(dataCortada[0] >= primeiroDia && dataCortada[0] <= ultimoDia){
-          semana += dados.valorTotal;
-        }
-      }
-    });
-    $('#totalDia').html(dia);
-    $('#totalSemana').html(semana);
-    $('#totalMes').html(mes);
-  });
 }
 
 function buscarVendas(){

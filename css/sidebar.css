@@ -111,7 +111,7 @@ li {
 }
 
 .openedSidebar {
-  margin-left: 15rem;
+  margin-left: 15rem !important;
 }
 
 .navIcon {

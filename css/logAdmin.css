@@ -3,15 +3,6 @@ div.content {
   grid-template-columns: 50% 50%;
 }
 
-.columns-2 {
-  display: grid;
-  grid-template-columns: repeat(2 , 50%);
-}
-
-.item {
-  margin: 5px;    
-} 
-
 div#bloco-azul {
   background-color: #8bd7f7;
   height: 100vh;
@@ -21,10 +12,10 @@ div#bloco-azul {
   text-align: center;
 }
 
-div#bloco-azul div.bloco-img h1{
- color: white;
- font-weight: bold;
- font-size: 4em;
+div#bloco-azul div.bloco-img h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 4em;
 }
 
 div#bloco-branco {
@@ -34,21 +25,21 @@ div#bloco-branco {
   align-items: center;
 }
 
-div#bloco-branco .form legend{
+div#bloco-branco .form legend {
   font-weight: bold;
   color: #022564;
   font-size: 3em;
 }
 
-div#bloco-branco .form p{
+div#bloco-branco .form p {
   color: #022564;
   margin-bottom: 0;
   font-size: 1.8em;
 }
 
-div#bloco-branco .form input {
-  width: 15vw;
-  margin-right: 5%;
+div#bloco-branco .form input[type="email"],
+div#bloco-branco .form input[type="password"] {
+  width: 30vw;
   border: 1.5px solid #022564;
   border-radius: 5px;
   padding: 10px 20px;
@@ -57,25 +48,24 @@ div#bloco-branco .form input {
   margin-bottom: 3%;
 }
 
-::placeholder{
+div#bloco-branco .form input[type="password"] {
+  margin-bottom: 10%;
+}
+
+::placeholder {
   color: #022564;
 }
 
-div#bloco-branco .btn {
-  display: flex;
-  justify-content: center;
-}
-
-div#bloco-branco button {
+button {
   border-radius: 5px;
   border: none;
   background-color: #4e72af;
   color: white;
   font-weight: bold;
   font-size: 1.5em;
-  padding: 10px 100px;
+  padding: 10px 25px;
 }
 
-div#bloco-branco wbutton:hover{
+button:hover {
   background-color: #3c5e9b;
 }

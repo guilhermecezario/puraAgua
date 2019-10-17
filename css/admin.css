@@ -1,75 +1,38 @@
-*{
-    padding: 0;
-    margin: 0;
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-div.content {
-    display: grid;
-    grid-template-columns: 50% 50%;
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-div#bloco-azul {
-    background-color: #8bd7f7;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.card-admin{
+  width: 20%;
+  min-width: 500px;
+  min-height: 30vh;
+  margin: 0vh 3vw 3vh 3vw;
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
 }
 
-div#bloco-azul div.bloco-img h1{
-   color: white;
-   font-weight: bold;
-   font-size: 4em;
+.card-admin h2{
+  font-size: 30px;
 }
 
-div#bloco-branco {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card-total{
+  display: flex;
+  align-items: center;
+  height: 23vh;
+  justify-content: center;
 }
 
-div#bloco-branco .form legend{
-    font-weight: bold;
-    color: #022564;
-    font-size: 3em;
-}
-
-div#bloco-branco .form p{
-    color: #022564;
-    margin-bottom: 0;
-    font-size: 1.8em;
-}
-
-div#bloco-branco .form input[type="email"], div#bloco-branco .form input[type="password"] {
-    width: 30vw;
-    border: 1.5px solid #022564;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #022564;
-    background-color: #ecf3fe;
-    margin-bottom: 3%;
-}
-
-div#bloco-branco .form input[type="password"]{
-    margin-bottom: 10%;
-}
-
-::placeholder{
-    color: #022564;
-}
-
-button {
-    border-radius: 5px;
-    border: none;
-    background-color: #4e72af;
-    color: white;
-    font-weight: bold;
-    font-size: 1.5em;
-    padding: 10px 25px;
-}
-
-button:hover{
-    background-color: #3c5e9b;
+.card-total p{
+  font-size: 80px;
 }

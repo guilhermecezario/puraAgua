@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Administrador</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/logAdmin.css">
+  <link rel="icon" href="img/logo.png">
+</head>
+
+<body>
+  <div class="content">
+    <div id="bloco-azul">
+      <div class="bloco-img">
+        <a href="index.html">
+          <img src="img/logoPuraAgua.png" alt="Logo Pura Água">
+        </a>
+        <h1>Bem vindo Administrador</h1>
+      </div>
+    </div>
+    <div id="bloco-branco">
+      <div class="form">
+        <legend>Login</legend>
+        <div>
+          <p>E-mail</p>
+          <input type="email" name="email" placeholder="Insira o seu e-mail" id="email"/>
+
+        </div>
+
+        <div>
+          <p>Senha</p>
+          <input type="password" name="senha" placeholder="Insira o sua senha" id="senha">
+        </div>
+          <span id="mensagem"></span>
+        <div>
+          <button onclick="entrarAdmin()">Entrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery-3.4.1.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+  <script src="./js/inicializeFirebase.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

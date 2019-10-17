@@ -1,22 +1,27 @@
 var button = document.querySelector('#sidebarButton');
 var wrapper = document.querySelector('#wrapper');
-var card = document.querySelector('.card');
-var table = document.querySelector('table');
+var card = document.querySelectorAll('.card');
 var inputSearch = document.querySelector('.navSearch');
+
+console.log(card)
 
 button.addEventListener("click", function (e) {
   e.preventDefault();
+
   if (wrapper.className === 'closedSidebar') {
-    wrapper.classList.remove('closedSidebar');
     wrapper.classList.add('openedSidebar');
-    table.style.width = "84.5vw";
-    card.style.width = "84.5vw";
+    for (c = 0; c < card.length; c++) {
+      card[c].style.width = "86vw";
+    }
+    
     inputSearch.style.marginRight = "15rem";
+
+    
   } else {
     wrapper.classList.remove('openedSidebar');
-    wrapper.classList.add('closedSidebar');
-    table.style.width = "98vw";
-    card.style.width = "98vw";
+    for (c = 0; c < card.length; c++) {
+      card[c].style.width = "98vw";
+    }
     inputSearch.style.marginRight = "0.5rem"
   }
 });
