@@ -11,40 +11,40 @@
   <link rel="icon" href="img/logo.png">
 </head>
 
-<body>
+<body onload="onloadEditCliente()">
   <div class="content">
     <div id="bloco-azul">
       <div class="bloco-img">
         <a href="index.html">
           <img src="img/logoPuraAgua.png" alt="Logo Pura Água">
         </a>
-        <h1>Cadastro de clientes</h1>
+        <h1>Editar Cliente</h1>
       </div>
     </div>
     <div id="bloco-branco">
       <div class="form">
-        <legend>Cadastro</legend>
+        <legend>Editar</legend>
         <div class="columns-2">
           <div class="item">
             <p>Nome</p>
-            <input type="text" name="nome" placeholder="Ex: Rafael" id="nome"/>
+            <input type="text" name="nome" id="nome"/>
           </div>
 
           <div class="item">
             <p>Sobrenome</p>
-            <input type="text" name="sobrenome" placeholder="Ex: Rodriguez" id="sobrenome"/>
+            <input type="text" name="sobrenome" id="sobrenome"/>
           </div>
         </div>
 
         <div class="columns-2">
           <div class="item">
             <p>N° do telefone</p>
-            <input type="number" name="telefone" placeholder="Ex: (15) 99999-9999" id="telefone"/>
+            <input type="number" name="telefone" id="telefone"/>
           </div>
 
           <div class="item">
             <p>Cidade</p>
-            <input type="text" name="cidade" placeholder="Ex: Itapeva" id="cidade"/>
+            <input type="text" name="cidade" id="cidade"/>
           </div>
         </div>
 
@@ -71,7 +71,7 @@
         <span id="mensagem"></span>
 
         <div class="btn">
-          <button onclick="addCliente()" id="button">cadastrar</button>
+          <button onclick="editCliente()" id="button">editar</button>
         </div>
       </div>
     </div>

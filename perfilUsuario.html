@@ -46,6 +46,8 @@
         <div class="card cardInfo">
           <div class="cardInfo-header">
             <h2>Informações do cliente</h2>
+            <button onclick="abrirEditCliente()">Editar cliente</button>
+            <button onclick="excluirCliente()">Excluir cliente</button>
           </div>
           <div class="cardInfo-line1">
             <div>Nome: <span id="nome"></span></div>
@@ -68,6 +70,7 @@
               <th>Data do galão</th>
               <th>Quantidade</th>
               <th>Valor total</th>
+              <th>Excluir</th>
             </tr>
           </thead>
           <tbody id="bodyTable">

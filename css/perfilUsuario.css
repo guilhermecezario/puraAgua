@@ -15,6 +15,9 @@
   letter-spacing: 0.1rem;
   color: rgb(27, 56, 105);
 }
+.buttonExcluir{
+  width: 30px;
+}
 
 .cardInfo-line1, .cardInfo-line2{
   display: flex;

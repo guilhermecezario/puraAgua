@@ -1,5 +1,7 @@
 var id;
 
+
+//funções da pagina inicial
 function buscarClientes(){
   urlClientes.once('value', data =>{
     $('#bodyTable').text('');
@@ -14,8 +16,14 @@ function buscarClientes(){
     });
   });
 }
+function abrirCliente(id){
+  window.location.href = 'perfilUsuario.html?id='+id;
+}
+
+//funções da pagina adicionar cliente
 function addCliente(){
-  if($("#nome").val() && $("#sobrenome").val() && $("#telefone").val() && $("#cidade").val() && $("#rua").val() && $("#numeroCasa").val() && $("#bairro").val()){
+  $('#button').html('carregando');
+  $("#button").prop("disabled", true);
     urlClientes.push({
       nome: $("#nome").val(),
       sobrenome: $("#sobrenome").val(),
@@ -24,19 +32,104 @@ function addCliente(){
       rua: $("#rua").val(),
       numeroCasa: $("#numeroCasa").val(),
       bairro: $("#bairro").val()
-    }).then(function(data){
+    }).then(function(){
       window.location.href = 'index.html';
     });
+}
+
+//funções da pagina perfil do cliente
+function buscarCliente(){
+  buscarUrl();
+
+  urlClientes.child(id).once('value', (snap)=>{
+    var dados = snap.val();
+    $("#nome").html(dados.nome);
+    $("#sobrenome").html(dados.sobrenome);
+    $("#telefone").html(dados.telefone);
+    $("#rua").html(dados.rua);
+    $("#bairro").html(dados.bairro);
+    $("#cidade").html(dados.cidade);
+    $("#numeroCasa").html(dados.numeroCasa);
+  });
+
+  buscarVendas();
+}
+
+function excluirVenda(id){
+  let opcao = confirm('deseja excluir essa venda?');
+
+  if(opcao == true){
+    urlVendas.child(id).remove();
   }
 }
-function abrirCliente(id){
-  window.location.href = 'perfilUsuario.html?id='+id;
+
+function buscarVendas(){
+  urlVendas.on('value', data =>{
+    $('#bodyTable').text('');
+    data.forEach((element) => {
+      dados = element.val();
+      if(dados.idCliente == id){
+        $('#bodyTable').append('<tr>'+
+        '<th>'+dados.dataVenda+'</th>'+
+        '<th>'+dados.dataGalao+'</th>'+
+        '<th>'+dados.quantidade+'</th>'+
+        '<th>'+dados.valorTotal+'</th>'+
+        '<th>'+'<img class="buttonExcluir" src="img/excluir.png" id="'+element.key+'" onclick="excluirVenda(this.id)">'+'</th>'+
+        '</tr>');
+      }
+    });
+  });
+}
+function abrirEditCliente(){
+  window.location.href = 'editCliente.html?id='+id;
 }
 function abrirVenda(){
   window.location.href = 'novaVenda.html?id='+id;
 }
+function excluirCliente(){
+  let opcao = confirm('Isso irá apagar todos os dados desse usuario');
+  if(opcao == true){
+    urlClientes.child(id).remove().then(function(){
+      window.location.href = 'index.html';
+    })
+  }
+}
+//funções da pagina de editar cliente
+function onloadEditCliente(){
+  buscarUrl();
+  
+  urlClientes.child(id).once('value', (snap)=>{
+    var dados = snap.val();
+    console.log(dados);
+    $("#nome").val(dados.nome);
+    $("#sobrenome").val(dados.sobrenome);
+    $("#telefone").val(dados.telefone);
+    $("#rua").val(dados.rua);
+    $("#bairro").val(dados.bairro);
+    $("#cidade").val(dados.cidade);
+    $("#numeroCasa").val(dados.numeroCasa);
+  });
+}
+function editCliente(){
+  $('#button').html('carregando');
+  $("#button").prop("disabled", true);
+  urlClientes.child(id).update({
+    nome: $("#nome").val(),
+    sobrenome: $("#sobrenome").val(),
+    telefone: $("#telefone").val(),
+    cidade: $("#cidade").val(),
+    rua: $("#rua").val(),
+    numeroCasa: $("#numeroCasa").val(),
+    bairro: $("#bairro").val()
+  }).then(function(data){
+    window.location.href = 'perfilUsuario.html?id='+id;
+  });
+}
 
+//funções da tela de adicionar venda
 function addVenda(){
+  $('#button').html('carregando');
+  $("#button").prop("disabled", true);
   buscarUrl();
   if($("#dataVenda").val() && $("#dataGalao").val() && $("#quantidade").val() && $("#valorTotal").val()){
     urlVendas.push({
@@ -52,7 +145,7 @@ function addVenda(){
     $('#mensagem').html("Todos os campos são obrigatorios");
   }
 }
-
+//funções da tela de login do administrador
 function entrarAdmin(){
   var auth = firebase.auth();
   var email = $('#email').val();
@@ -72,6 +165,7 @@ function entrarAdmin(){
   }
 }
 
+//funções da tela do administrador
 function conferirAdmin(){
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -89,7 +183,6 @@ function logout(){
     console.error( error );
   });
 }
-
 function contarTotal(){
   let dia = 0;
   let semana = 0;
@@ -126,50 +219,18 @@ function contarTotal(){
   });
 }
 
+//funções usada em varias paginas
 function buscarUrl(){
   var query = location.search.slice(1);
   var partes = query.split('&');
   partes.forEach(function (parte) {
     var chaveValor = parte.split('=');
-    if(chaveValor == ''){
+    if(chaveValor[1] == ''){
       window.location.href = 'index.html';
     }else{
       var valor = chaveValor[1];
       id = valor;
     }
-  });
-}
-function buscarCliente(){
-  buscarUrl();
-
-  urlClientes.child(id).once('value', (snap)=>{
-    var dados = snap.val();
-    $("#nome").html(dados.nome);
-    $("#sobrenome").html(dados.sobrenome);
-    $("#telefone").html(dados.telefone);
-    $("#rua").html(dados.rua);
-    $("#bairro").html(dados.bairro);
-    $("#cidade").html(dados.cidade);
-    $("#numeroCasa").html(dados.numeroCasa);
-  });
-
-  buscarVendas();
-}
-
-function buscarVendas(){
-  urlVendas.once('value', data =>{
-    $('#bodyTable').text('');
-    data.forEach((element) => {
-      dados = element.val();
-      if(dados.idCliente == id){
-        $('#bodyTable').append('<tr>'+
-        '<th>'+dados.dataVenda+'</th>'+
-        '<th>'+dados.dataGalao+'</th>'+
-        '<th>'+dados.quantidade+'</th>'+
-        '<th>'+dados.valorTotal+'</th>'+
-        '</tr>');
-      }
-    });
   });
 }
 
