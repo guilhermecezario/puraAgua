@@ -34,3 +34,35 @@
 .cardInfo-line2{
   background-color: #A3DEF8;
 }
+
+.buttonsCliente{
+  margin-top: 10px;
+}
+
+.buttonsCliente button{
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: #f6f6f6;
+  cursor: pointer;
+  width: 11rem;
+}
+
+.editarButton{
+  border: solid 2px #f1c40f;
+  margin-right: 20px;
+}
+
+.excluirButton{
+  border: solid 2px #eb2f06;
+}
+
+.editarButton:hover{
+  background-color: #f1c40f;
+  color: white;
+}
+
+.excluirButton:hover{
+  background-color: #eb2f06;
+  color: white;
+}
